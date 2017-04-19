@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<h:head>
+	
+	</h:head>
+	<h:body>
+	   <div class="center_content">
+      <ui:insert>
+          <h:form > 
+				<p:growl id="msgs" showDetail="true" />
+				 <p:panel id="horizontal" 	binding="#{MbForm.panel}" styleClass="style"/>
+          </h:form>
+      </ui:insert>
+      </div>
+      
+      <h:outputStylesheet id="style">
+
+		panel.people {
+    width: 100%;
+    border-collapse: collapse; 
+}
+ 
+panel.people panelGrid,
+panel.people panelGrid {
+    padding: 5px;
+    text-align: left;
+    font-family: Arial, Verdana, sans-serif;
+}
+		
+      </h:outputStylesheet>
+	</h:body>
+</html>

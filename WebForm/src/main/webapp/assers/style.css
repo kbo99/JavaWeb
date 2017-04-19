@@ -1,0 +1,11 @@
+panel.people {
+    width: 100%;
+    border-collapse: collapse; 
+}
+ 
+panel.people panelGrid,
+panel.people panelGrid {
+    padding: 5px;
+    text-align: left;
+    font-family: Arial, Verdana, sans-serif;
+}

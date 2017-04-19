@@ -1,0 +1,7 @@
+1491795147531	Rename resource 'index.jsp'
+1491969167310	Rename resource 'index.xhtml'
+1491969409474	Rename resource 'dinamic.html'
+1491970934608	Rename type 'MBForm'
+1491972767130	Move 'dinamic.xhtml' to 'webapp'
+1492148122518	Encapsulate field 'panel'
+1492374133707	Encapsulate field 'model'
