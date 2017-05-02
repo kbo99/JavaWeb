@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kbo.model.util;
+package com.kbo.util;
 
 /**
  * @author Giovanni

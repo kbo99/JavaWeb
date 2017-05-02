@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kbo.model.form.vo;
+package com.kbo.form.vo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +20,21 @@ public class FormVO implements java.io.Serializable {
 	private String frmDescripcion;
 	private List<SeccionFormVO> seccionFormVO;
 	
+	public FormVO(){
+		
+	}
+	
 	public FormVO(int iter) {
 		frmDescripcion = "Prueba1";
 		seccionFormVO = new ArrayList<>();
 		int id = 0;
+		SeccionFormVO secFor = new SeccionFormVO();
 		for (int i = 0; i < iter ; i++) {
-			SeccionFormVO secFor = new SeccionFormVO();
 			if (i % 5 == 0) {
 				secFor.setValue("prueba" + i);
 			}
-			secFor.setListComponenteVO(new ArrayList<ComponenteVO>());
+			secFor.setListSeccionVO(new ArrayList<SeccionVO>());
+			List<ComponenteVO> lisrCompo = new ArrayList<ComponenteVO>();
 			for (int j = 0; j < 5; j++) {
 				ComponenteVO compVO = new ComponenteVO();
 				compVO.setBindingVO("persona");
@@ -37,7 +42,7 @@ public class FormVO implements java.io.Serializable {
 				compVO.setComId(++id);
 				compVO.setComTpComponente(1);
 				compVO.setRequerid(j % 2 == 0 ? "true" : "false");
-				secFor.getListComponenteVO().add(compVO);
+				lisrCompo.add(compVO);
 			}
 			seccionFormVO.add(secFor);
 		}
@@ -47,7 +52,10 @@ public class FormVO implements java.io.Serializable {
 		seccionFormVO = new ArrayList<>();
 		SeccionFormVO secFor = new SeccionFormVO();
 		secFor.setValue("Datos Persona");
-		secFor.setListComponenteVO(new ArrayList<ComponenteVO>());
+		secFor.setListSeccionVO(new ArrayList<SeccionVO>());
+		
+		SeccionVO seccionVO = new SeccionVO();
+		seccionVO.setListComponenteVO(new ArrayList<ComponenteVO>());
 		int id = 0;
 		
 		ComponenteVO compVO = new ComponenteVO();
@@ -56,7 +64,7 @@ public class FormVO implements java.io.Serializable {
 		compVO.setComId(++id);
 		compVO.setComTpComponente(1);
 		compVO.setRequerid("true");
-		secFor.getListComponenteVO().add(compVO);
+		seccionVO.getListComponenteVO().add(compVO);
 		
 		compVO = new ComponenteVO();
 		compVO.setBindingVO("perApe");
@@ -64,11 +72,11 @@ public class FormVO implements java.io.Serializable {
 		compVO.setComId(++id);
 		compVO.setComTpComponente(1);
 		compVO.setRequerid("true");
-		secFor.getListComponenteVO().add(compVO);
+		seccionVO.getListComponenteVO().add(compVO);
 		
-		seccionFormVO.add(secFor);
-		secFor = new SeccionFormVO();
-		secFor.setListComponenteVO(new ArrayList<ComponenteVO>());
+		secFor.getListSeccionVO().add(seccionVO);
+		seccionVO = new SeccionVO();
+		seccionVO.setListComponenteVO(new ArrayList<ComponenteVO>());
 		
 		compVO = new ComponenteVO();
 		compVO.setBindingVO("perFNac");
@@ -76,7 +84,7 @@ public class FormVO implements java.io.Serializable {
 		compVO.setComId(++id);
 		compVO.setComTpComponente(2);
 		compVO.setRequerid("true");
-		secFor.getListComponenteVO().add(compVO);
+		seccionVO.getListComponenteVO().add(compVO);
 		
 		
 		compVO = new ComponenteVO();
@@ -85,7 +93,9 @@ public class FormVO implements java.io.Serializable {
 		compVO.setComId(++id);
 		compVO.setComTpComponente(1);
 		compVO.setRequerid("true");
-		secFor.getListComponenteVO().add(compVO);
+		seccionVO.getListComponenteVO().add(compVO);
+		
+		secFor.getListSeccionVO().add(seccionVO);
 		
 		seccionFormVO.add(secFor);
 	}

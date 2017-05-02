@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kbo.model.form.vo;
+package com.kbo.form.vo;
 
 import java.util.List;
 

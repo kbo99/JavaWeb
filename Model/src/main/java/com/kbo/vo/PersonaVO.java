@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kbo.model.vo;
+package com.kbo.vo;
 
 import java.util.Date;
 

@@ -22,11 +22,11 @@ import org.primefaces.component.tabview.Tab;
 import org.primefaces.component.tabview.TabView;
 import org.primefaces.util.HTML;
 
-import com.kbo.model.form.vo.ComponenteVO;
-import com.kbo.model.form.vo.FormVO;
-import com.kbo.model.form.vo.SeccionFormVO;
-import com.kbo.model.util.Const;
-import com.kbo.model.vo.PersonaVO;
+import com.kbo.form.vo.ComponenteVO;
+import com.kbo.form.vo.FormVO;
+import com.kbo.form.vo.SeccionFormVO;
+import com.kbo.util.Const;
+import com.kbo.vo.PersonaVO;
 import com.sun.faces.taglib.html_basic.PanelGroupTag;
 
 /**

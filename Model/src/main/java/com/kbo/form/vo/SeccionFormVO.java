@@ -1,4 +1,4 @@
-package com.kbo.model.form.vo;
+package com.kbo.form.vo;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class SeccionFormVO implements java.io.Serializable {
 	private Integer FrmId;
 	private Integer order;
 	private String value;
-	private List<ComponenteVO> listComponenteVO;
+	private List<SeccionVO> listSeccionVO;
 	
 	public SeccionFormVO () {
 		this.value = "";
@@ -71,18 +71,20 @@ public class SeccionFormVO implements java.io.Serializable {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
 	/**
-	 * @return the listComponenteVO
+	 * @return the listSeccionVO
 	 */
-	public List<ComponenteVO> getListComponenteVO() {
-		return listComponenteVO;
+	public List<SeccionVO> getListSeccionVO() {
+		return listSeccionVO;
 	}
+
 	/**
-	 * @param listComponenteVO the listComponenteVO to set
+	 * @param listSeccionVO the listSeccionVO to set
 	 */
-	public void setListComponenteVO(List<ComponenteVO> listComponenteVO) {
-		this.listComponenteVO = listComponenteVO;
+	public void setListSeccionVO(List<SeccionVO> listSeccionVO) {
+		this.listSeccionVO = listSeccionVO;
 	}
-	
+
 	
 }

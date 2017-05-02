@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.model.UsuGrupo" table="usu_grupo" catalog="indes">
+        <composite-id name="id" class="com.kbo.model.UsuGrupoId">
+            <key-property name="usuId" type="int">
+                <column name="usu_id" />
+            </key-property>
+            <key-property name="grpId" type="int">
+                <column name="grp_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usuario" class="com.kbo.model.Usuario" update="false" insert="false" fetch="select">
+            <column name="usu_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grupo" class="com.kbo.model.Grupo" update="false" insert="false" fetch="select">
+            <column name="grp_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

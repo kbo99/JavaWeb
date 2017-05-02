@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:config.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.pass}" />
+	</bean>
+
+	<!-- <bean id="evads" class="org.springframework.jndi.JndiObjectFactoryBean" -->
+	<!-- lazy-init="true"> -->
+	<!-- <property name="jndiName"> -->
+	<!-- <value>jdbc/eva01</value> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+			</props>
+		</property>
+
+		<property name="mappingResources">
+			<list>
+				<value>com/kbo/form/model/Componente.hbm.xml</value>
+				<value>com/kbo/form/model/FormDinamico.hbm.xml</value>
+				<value>com/kbo/form/model/GrupoComponente.hbm.xml</value>
+				<value>com/kbo/form/model/Seccion.hbm.xml</value>
+				<value>com/kbo/form/model/SeccionForm.hbm.xml</value>
+
+				<value>com/kbo/model/Colonia.hbm.xml</value>
+				<value>com/kbo/model/Direccion.hbm.xml</value>
+				<value>com/kbo/model/DocDat.hbm.xml</value>
+				<value>com/kbo/model/Entidad.hbm.xml</value>
+				<value>com/kbo/model/ExpClinico.hbm.xml</value>
+				<value>com/kbo/model/Grupo.hbm.xml</value>
+				<value>com/kbo/model/Municipio.hbm.xml</value>
+				<value>com/kbo/model/Persona.hbm.xml</value>
+				<value>com/kbo/model/Usuario.hbm.xml</value>
+				<value>com/kbo/model/UsuGrupo.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="transactionProxyTemplate" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="formDAO" class="com.kbo.form.dao.FormDAOImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="personaDAO" class="com.kbo.dao.PersonaDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="baseServiceDAO" class="com.kbo.hibernate.BaseServiceDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

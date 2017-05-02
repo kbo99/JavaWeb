@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.form.model.Componente" table="componente" catalog="indes">
+        <id name="comId" type="java.lang.Integer">
+            <column name="com_id" />
+            <generator class="identity" />
+        </id>
+        <property name="secId" type="java.lang.Integer">
+            <column name="sec_id" />
+        </property>
+        <property name="comTipo" type="int">
+            <column name="com_tipo" not-null="true" />
+        </property>
+        <property name="comDesc" type="string">
+            <column name="com_desc" length="45" />
+        </property>
+        <property name="comOrden" type="string">
+            <column name="com_orden" length="45" />
+        </property>
+        <property name="comBinding" type="string">
+            <column name="com_binding" length="45" />
+        </property>
+        <property name="comRequerido" type="char">
+            <column name="com_requerido" length="1" not-null="true" />
+        </property>
+        <property name="comCatalogo" type="string">
+            <column name="com_catalogo" length="45" />
+        </property>
+        <property name="comEnablePer" type="string">
+            <column name="com_enable_per" length="45" />
+        </property>
+        <property name="comVisiblePer" type="string">
+            <column name="com_visible_per" length="45" />
+        </property>
+        <property name="comPosicion" type="java.lang.Integer">
+            <column name="com_posicion" />
+        </property>
+        <set name="grupoComponentesForComId" table="grupo_componente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="com_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.form.model.GrupoComponente" />
+        </set>
+    </class>
+</hibernate-mapping>
