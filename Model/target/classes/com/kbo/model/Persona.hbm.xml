@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.model.Persona" table="persona" catalog="indes">
+        <id name="perId" type="java.lang.Integer">
+            <column name="per_id" />
+            <generator class="identity" />
+        </id>
+        <property name="perNombre" type="string">
+            <column name="per_nombre" length="45" not-null="true" />
+        </property>
+        <property name="perAppaterno" type="string">
+            <column name="per_appaterno" length="45" not-null="true" />
+        </property>
+        <property name="perApmaterno" type="string">
+            <column name="per_apmaterno" length="45" />
+        </property>
+        <property name="perEmail" type="string">
+            <column name="per_email" length="45" />
+        </property>
+        <property name="perFalta" type="timestamp">
+            <column name="per_falta" length="19" not-null="true" />
+        </property>
+        
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="per_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.model.Usuario" />
+        </set>
+        <set name="direccions" table="direccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="per_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.model.Direccion" />
+        </set>
+        <set name="expClinicos" table="exp_clinico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="per_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.model.ExpClinico" />
+        </set>
+        <set name="docDats" table="doc_dat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="per_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.model.DocDat" />
+        </set>
+    </class>
+</hibernate-mapping>

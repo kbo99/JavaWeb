@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.form.model.SeccionForm" table="seccion_form" catalog="indes">
+        <id name="scfId" type="java.lang.Integer">
+            <column name="scf_id" />
+            <generator class="identity" />
+        </id>
+        <property name="forId" type="java.lang.Integer">
+            <column name="for_id" />
+        </property>
+        <property name="scfDesc" type="java.lang.Integer">
+            <column name="scf_desc" />
+        </property>
+        <property name="scfOrden" type="int">
+            <column name="scf_orden" not-null="true" />
+        </property>
+        <set name="seccions" table="seccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scf_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.form.model.Seccion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.model.Colonia" table="colonia" catalog="indes">
+        <id name="colId" type="java.lang.Integer">
+            <column name="col_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="municipio" class="com.kbo.model.Municipio" fetch="select">
+            <column name="mun_id" not-null="true" />
+        </many-to-one>
+        <property name="colNom" type="string">
+            <column name="col_nom" length="45" />
+        </property>
+        <property name="colCp" type="string">
+            <column name="col_cp" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

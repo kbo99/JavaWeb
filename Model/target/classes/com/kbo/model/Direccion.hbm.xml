@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.model.Direccion" table="direccion" catalog="indes">
+        <id name="dirId" type="java.lang.Integer">
+            <column name="dir_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persona" class="com.kbo.model.Persona" fetch="select">
+            <column name="per_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="colonia" class="com.kbo.model.Colonia" fetch="select">
+            <column name="col_id" />
+        </many-to-one>
+        <property name="dirMun" type="string">
+            <column name="dir_mun" length="45" />
+        </property>
+        <property name="dirCalle" type="string">
+            <column name="dir_calle" length="45" />
+        </property>
+        <property name="dirNoext" type="string">
+            <column name="dir_noext" length="10" />
+        </property>
+        <property name="dirNoint" type="string">
+            <column name="dir_noint" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

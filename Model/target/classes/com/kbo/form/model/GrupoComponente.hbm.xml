@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.form.model.GrupoComponente" table="grupo_componente" catalog="indes">
+        <composite-id name="id" class="com.kbo.form.model.GrupoComponenteId">
+            <key-property name="comId" type="int">
+                <column name="com_id" />
+            </key-property>
+            <key-property name="grpComId" type="int">
+                <column name="grp_com_id" />
+            </key-property>
+            <key-property name="grpCondicion" type="string">
+                <column name="grp_condicion" length="45" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="componenteByComId" class="com.kbo.form.model.Componente" update="false" insert="false" fetch="select">
+            <column name="com_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="componenteByGrpComId" class="com.kbo.form.model.Componente" update="false" insert="false" fetch="select">
+            <column name="grp_com_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

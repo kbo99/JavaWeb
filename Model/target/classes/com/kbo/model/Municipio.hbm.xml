@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.model.Municipio" table="municipio" catalog="indes">
+        <id name="munId" type="java.lang.Integer">
+            <column name="mun_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="entidad" class="com.kbo.model.Entidad" fetch="select">
+            <column name="ent_id" length="2" not-null="true" />
+        </many-to-one>
+        <property name="cveMun" type="string">
+            <column name="cve_mun" length="5" not-null="true" />
+        </property>
+        <property name="nomMun" type="string">
+            <column name="nom_mun" length="50" />
+        </property>
+        <property name="cveCab" type="string">
+            <column name="cve_cab" length="4" />
+        </property>
+        <property name="nomCab" type="string">
+            <column name="nom_cab" length="50" />
+        </property>
+        <set name="colonias" table="colonia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mun_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.model.Colonia" />
+        </set>
+    </class>
+</hibernate-mapping>

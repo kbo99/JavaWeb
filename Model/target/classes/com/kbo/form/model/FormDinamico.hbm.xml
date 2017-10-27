@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/04/2017 04:07:46 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.kbo.form.model.FormDinamico" table="form_dinamico" catalog="indes">
+        <id name="forId" type="java.lang.Integer">
+            <column name="for_id" />
+            <generator class="identity" />
+        </id>
+        <property name="forDesc" type="string">
+            <column name="for_desc" length="200" />
+        </property>
+        <property name="forDinamicocol" type="string">
+            <column name="for_dinamicocol" length="45" />
+        </property>
+        <set name="seccionForms" table="seccion_form" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="for_id" not-null="true" />
+            </key>
+            <one-to-many class="com.kbo.form.model.SeccionForm" />
+        </set>
+    </class>
+</hibernate-mapping>
